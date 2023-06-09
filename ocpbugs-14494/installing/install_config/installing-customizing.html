@@ -35531,9 +35531,6 @@ Configure disk encryption by using the following procedure.</p>
 <li>
 <p>Requires no user intervention for providing passphrases</p>
 </li>
-<li>
-<p>Uses AES-256-XTS encryption, or AES-256-CBC if FIPS mode is enabled</p>
-</li>
 </ul>
 </div>
 <div class="sect3">
@@ -35568,7 +35565,7 @@ For example, the <code>threshold</code> value of <code>2</code> in the following
         <span class="na">thumbprint</span><span class="pi">:</span> <span class="s">VCJsvZFjBSIHSldw78rOrq7h2ZF</span>
     <span class="na">threshold</span><span class="pi">:</span> <span class="s">2</span> <i class="conum" data-value="4"></i><b>(4)</b>
 <span class="na">openshift</span><span class="pi">:</span>
-  <span class="na">fips</span><span class="pi">:</span> <span class="no">true</span></code></pre>
+  <span class="na">fips</span><span class="pi">:</span> <span class="no">true</span> <i class="conum" data-value="5"></i><b>(5)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -35589,6 +35586,10 @@ Some examples include, <code>x86_64</code>, <code>aarch64</code>, or <code>ppc64
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
 <td>Specify the minimum number of TPM v2 and Tang encryption conditions required for decryption to occur.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>OpenShift Container Platform Branch Build is based on Red Hat Enterprise Linux (RHEL) 9.2. RHEL 9.2 cryptographic modules have not yet been submitted for FIPS validation. For more information, see "About this release" in the 4.13 <em>OpenShift Container Platform Release Notes</em>.</td>
 </tr>
 </table>
 </div>
@@ -35907,8 +35908,21 @@ For more details, see "About disk mirroring".</td>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>If you are configuring nodes to use both disk encryption and mirroring, both features must be configured in the same Butane config.
-If you are configuring disk encryption on a node with FIPS mode enabled, you must include the <code>fips</code> directive in the same Butane config, even if FIPS mode is also enabled in a separate manifest.</p>
+<p>OpenShift Container Platform Branch Build is based on Red Hat Enterprise Linux (RHEL) 9.2. RHEL 9.2 cryptographic modules have not yet been submitted for FIPS validation. For more information, see "About this release" in the 4.13 <em>OpenShift Container Platform Release Notes</em>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you are configuring nodes to use both disk encryption and mirroring, both features must be configured in the same Butane config.</p>
 </div>
 </td>
 </tr>
@@ -36046,8 +36060,7 @@ When the TPM v2 or Tang encryption modes are enabled, the RHCOS boot disks are e
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>The encryption algorithm used to encrypt the LUKS2 volume.
-The <code>aes-cbc-essiv:sha256</code> cipher is used if FIPS mode is enabled.</td>
+<td>The encryption algorithm used to encrypt the LUKS2 volume.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
